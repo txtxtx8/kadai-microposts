@@ -9,12 +9,12 @@
                     </div>
                     <div>
                       <p><%= favpost.content %></p>
-                      <%= render 'favorites/likes_button', micropost: favpost %>
-                    </div>
-                    <div>
+                      <div class="row">
                         <% if current_user === favpost.user%>
-                            <%= link_to "Delete", favpost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                          <%= link_to "削除", favpost, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %>
                         <% end %>
+                        <%= render 'favorites/likes_button', micropost: favpost %>
+                      </div>
                     </div>
                 </div>
             </li>
