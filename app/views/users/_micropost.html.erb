@@ -1,14 +1,24 @@
 <% if favposts.any? %>
     <ul class="list-unstyled">
-        <% favposts.each do |likes|%>
+        <% favposts.each do |favpost|%>
             <li class="media">
+                <img class="mr-2 rounded" src="<%= gravatar_url(favpost.user, { size: 50 }) %>" alt="">
                 <div class="media-body">
                     <div>
-                        <%= likes.content %>
+                      <%= link_to favpost.user.name, user_path(favpost.user) %> <span class="text-muted">posted at <%= favpost.created_at %></span>
+                    </div>
+                    <div>
+                      <p><%= favpost.content %></p>
+                      <%= render 'favorites/likes_button', micropost: favpost %>
+                    </div>
+                    <div>
+                        <% if current_user === favpost.user%>
+                            <%= link_to "Delete", favpost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                        <% end %>
                     </div>
                 </div>
             </li>
         <%end%>
     </ul>
- <!--paginateエラー-->
+ 
 <% end %>
