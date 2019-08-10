@@ -1,0 +1,14 @@
+<% if favposts.any? %>
+    <ul class="list-unstyled">
+        <% favposts.each do |likes|%>
+            <li class="media">
+                <div class="media-body">
+                    <div>
+                        <%= likes.content %>
+                    </div>
+                </div>
+            </li>
+        <%end%>
+    </ul>
+ <!--paginateエラー-->
+<% end %>
